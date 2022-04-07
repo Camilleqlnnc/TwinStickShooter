@@ -8,14 +8,15 @@ public class LevelManager : MonoBehaviour
     #region Exposed
     [SerializeField] IntVariable _currentPlayerHP;
     [SerializeField] IntVariable _enemyCount;
-
-
+    /*[SerializeField] AudioClip _win;
+    [SerializeField] AudioClip _lose;
+    AudioSource audioSource;*/
     #endregion
 
     #region Unity Life Cycle
     void Awake()
     {
-        
+        //audioSource = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
@@ -41,11 +42,13 @@ public class LevelManager : MonoBehaviour
     private void Win()
     {
         Debug.Log("WINNER");
+        //audioSource.PlayOneShot(_win);
     }
 
     private void Lose()
     {
         Debug.Log("LOSE, TRY AGAIN");
+        //audioSource.PlayOneShot(_lose);
     }
     #endregion
 

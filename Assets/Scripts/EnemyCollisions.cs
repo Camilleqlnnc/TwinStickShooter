@@ -14,7 +14,7 @@ public class EnemyCollisions : MonoBehaviour
     #region Unity Life Cycle
     void Awake()
     {
-        
+
     }
     // Start is called before the first frame update
     void Start()
@@ -44,6 +44,7 @@ public class EnemyCollisions : MonoBehaviour
         if(other.gameObject.CompareTag("Bullet"))
         {
             Destroy(gameObject);
+            FindObjectOfType<SoundManager>().Play("EnemyDeath");
             Debug.Log("collision bullet");
         }
     }

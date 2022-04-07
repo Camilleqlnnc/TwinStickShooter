@@ -11,13 +11,13 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] float _bulletSpeed;
     [SerializeField] float delayBeforeBulletDestroyed;
     [SerializeField] float _delayBetweenShots;
-
     #endregion
 
     #region Unity Life Cycle
     void Awake()
     {
         _nextShotTime = Time.time;
+
     }
     // Start is called before the first frame update
     void Start()
@@ -48,6 +48,7 @@ public class PlayerShoot : MonoBehaviour
         Destroy(newBullet.gameObject, delayBeforeBulletDestroyed);
         Bullet _bullet = newBullet.GetComponent<Bullet>();
         _bullet.Shoot(_bulletSpeed);
+        FindObjectOfType<SoundManager>().Play("PlayerShoot");
 
     }
     #endregion
