@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     //Toutes les variables accessibles dans l'inspector
     #region Exposed
-    [SerializeField] IntVariable _currentPlayerHP;
-    [SerializeField] IntVariable _enemyCount;
+    [SerializeField] IntVariable _enemyStartHP;
+    [SerializeField] IntVariable _enemyCurrentHP;
     #endregion
 
     #region Unity Life Cycle
     void Awake()
     {
+        _enemyCurrentHP._value = _enemyStartHP._value;
 
     }
     // Start is called before the first frame update
@@ -24,30 +25,12 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_enemyCount._value <= 0)
-        {
-            Win();
-        }
-        else if(_currentPlayerHP._value <= 0)
-        {
-            Lose();
-        }
+        
     }
     #endregion
    //Toutes les fonctions créées par l'équipe
     #region Main Methods
-    private void Win()
-    {
-        Debug.Log("WINNER");
-        //audioSource.PlayOneShot(_win);
-    }
 
-    private void Lose()
-    {
-        Debug.Log("LOSE, TRY AGAIN");
-        //FindObjectOfType<SoundManager>().Play("PlayerDeath");
-        //audioSource.PlayOneShot(_lose);
-    }
     #endregion
 
     //Les variables privées et protégées

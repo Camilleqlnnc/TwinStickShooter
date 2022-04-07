@@ -8,6 +8,7 @@ public class EnemyCollisions : MonoBehaviour
     #region Exposed
     [SerializeField] IntVariable _playerCurrentHP;
     [SerializeField] IntVariable _enemyCount;
+    [SerializeField] IntVariable _enemyCurrentHP;
 
     #endregion
 
@@ -43,9 +44,12 @@ public class EnemyCollisions : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
-            FindObjectOfType<SoundManager>().Play("EnemyDeath");
-            Debug.Log("collision bullet");
+            this._enemyCurrentHP._value--;
+            if(this._enemyCurrentHP._value <= 0)
+            {
+                Destroy(gameObject);
+                FindObjectOfType<SoundManager>().Play("EnemyDeath");
+            }
         }
     }
     private void OnDestroy()
