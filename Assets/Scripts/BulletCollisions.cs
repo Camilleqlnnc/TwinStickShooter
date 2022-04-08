@@ -28,8 +28,13 @@ public class BulletCollisions : MonoBehaviour
     #endregion
     //Toutes les fonctions créées par l'équipe
     #region Main Methods
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
+        
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            FindObjectOfType<SoundManager>().Play("EnemyDeath");
+        }
         Destroy(gameObject);
     }
     #endregion

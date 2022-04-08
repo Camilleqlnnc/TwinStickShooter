@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     #region Exposed
     [SerializeField] IntVariable _playerStartHP;
     [SerializeField] IntVariable _playerCurrentHP;
+    public GameObject _leftWing;
+    public GameObject _rightWing;
     #endregion
 
     #region Unity Life Cycle
@@ -16,9 +18,29 @@ public class PlayerHealth : MonoBehaviour
         _playerCurrentHP._value = _playerStartHP._value;
     }
     #endregion
-   //Toutes les fonctions créées par l'équipe
+    //Toutes les fonctions créées par l'équipe
     #region Main Methods
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            _playerCurrentHP._value--;
+        }
+        if(_playerCurrentHP._value <= 2)
+        {
+            _rightWing.SetActive(false);
+        }
+        if(_playerCurrentHP._value <= 1)
+        {
+            _leftWing.SetActive(false);
+        }
+        if(_playerCurrentHP._value <= 0)
+        {
+            gameObject.SetActive(false);
+            FindObjectOfType<SoundManager>().Stop("Theme");
+            FindObjectOfType<SoundManager>().Play("PlayerDeath");
+        }
+    }
     #endregion
 
     //Les variables privées et protégées
