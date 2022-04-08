@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 885331776161654803}
   - component: {fileID: 821939570}
   - component: {fileID: 1604857103420707762}
-  - component: {fileID: 30567984}
   m_Layer: 0
   m_Name: EnemyShooter
   m_TagString: Enemy
@@ -80,21 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCurrentHP: {fileID: 11400000, guid: c3d33ec7a1147a641879dfcd77fc44cc, type: 2}
   _enemyCount: {fileID: 11400000, guid: 785b1f117f39d1942b887cc1459341ee, type: 2}
-  _enemyCurrentHP: {fileID: 11400000, guid: 20a6c8a0263d444419f712194a4e3ef9, type: 2}
---- !u!114 &30567984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182781342737656000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12be28c1a38c7da4891175bf84598e2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   _enemyStartHP: {fileID: 11400000, guid: 259b44b018f5a3f46ac5ce049fa800c7, type: 2}
-  _enemyCurrentHP: {fileID: 11400000, guid: 20a6c8a0263d444419f712194a4e3ef9, type: 2}
 --- !u!1 &1182781342967340786
 GameObject:
   m_ObjectHideFlags: 0

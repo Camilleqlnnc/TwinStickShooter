@@ -8,14 +8,15 @@ public class EnemyCollisions : MonoBehaviour
     #region Exposed
     [SerializeField] IntVariable _playerCurrentHP;
     [SerializeField] IntVariable _enemyCount;
-    [SerializeField] IntVariable _enemyCurrentHP;
+    [SerializeField] IntVariable _enemyStartHP;
+    
 
     #endregion
 
     #region Unity Life Cycle
     void Awake()
     {
-
+        _enemyHealth = _enemyStartHP._value;
     }
     // Start is called before the first frame update
     void Start()
@@ -44,8 +45,8 @@ public class EnemyCollisions : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Bullet"))
         {
-            this._enemyCurrentHP._value--;
-            if(this._enemyCurrentHP._value <= 0)
+            this._enemyHealth--;
+            if(this._enemyHealth <= 0)
             {
                 Destroy(gameObject);
                 FindObjectOfType<SoundManager>().Play("EnemyDeath");
@@ -61,6 +62,6 @@ public class EnemyCollisions : MonoBehaviour
 
     //Les variables privées et protégées
     #region Private & Protected
-
+    private float _enemyHealth;
     #endregion
 }
