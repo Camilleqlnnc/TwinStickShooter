@@ -32,22 +32,7 @@ public class EnemyCollisions : MonoBehaviour
     #endregion
     //Toutes les fonctions créées par l'équipe
     #region Main Methods
-    /*void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            _playerCurrentHP._value--;
-            if (_playerCurrentHP._value <= 0)
-            {
-                gameObject.SetActive(false);
-                FindObjectOfType<SoundManager>().Stop("Theme");
-                FindObjectOfType<SoundManager>().Play("PlayerDeath");
-                //GetComponent<Movement>().enabled = false;
 
-            }
-        }
-
-    }*/
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Bullet"))
