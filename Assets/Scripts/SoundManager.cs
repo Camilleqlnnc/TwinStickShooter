@@ -46,6 +46,12 @@ public class SoundManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s._audioSource.Play();
     }
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s._audioSource.Stop();
+    }
     #endregion
 
     //Les variables privées et protégées

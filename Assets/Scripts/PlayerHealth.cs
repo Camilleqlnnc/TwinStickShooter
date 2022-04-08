@@ -15,17 +15,6 @@ public class PlayerHealth : MonoBehaviour
     {
         _playerCurrentHP._value = _playerStartHP._value;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     #endregion
    //Toutes les fonctions créées par l'équipe
     #region Main Methods

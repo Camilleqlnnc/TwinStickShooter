@@ -9,7 +9,7 @@ public class EnemyCollisions : MonoBehaviour
     [SerializeField] IntVariable _playerCurrentHP;
     [SerializeField] IntVariable _enemyCount;
     [SerializeField] IntVariable _enemyStartHP;
-    
+
 
     #endregion
 
@@ -37,7 +37,12 @@ public class EnemyCollisions : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _playerCurrentHP._value--;
-            Debug.Log("collision");
+            if (_playerCurrentHP._value <= 0)
+            {
+                FindObjectOfType<SoundManager>().Stop("Theme");
+                FindObjectOfType<SoundManager>().Play("PlayerDeath");
+
+            }
         }
 
     }
@@ -48,8 +53,8 @@ public class EnemyCollisions : MonoBehaviour
             this._enemyHealth--;
             if(this._enemyHealth <= 0)
             {
-                Destroy(gameObject);
                 FindObjectOfType<SoundManager>().Play("EnemyDeath");
+                Destroy(gameObject);
             }
         }
     }

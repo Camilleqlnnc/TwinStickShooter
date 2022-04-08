@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 885331776161654803}
   - component: {fileID: 821939570}
   - component: {fileID: 1604857103420707762}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyShooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -80,6 +80,7 @@ MonoBehaviour:
   _playerCurrentHP: {fileID: 11400000, guid: c3d33ec7a1147a641879dfcd77fc44cc, type: 2}
   _enemyCount: {fileID: 11400000, guid: 785b1f117f39d1942b887cc1459341ee, type: 2}
   _enemyStartHP: {fileID: 11400000, guid: 259b44b018f5a3f46ac5ce049fa800c7, type: 2}
+  enemyDeathParticles: {fileID: 0}
 --- !u!1 &1182781342967340786
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +94,7 @@ GameObject:
   - component: {fileID: 1182781342967340790}
   - component: {fileID: 1182781342967340791}
   - component: {fileID: 1182781342967340784}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
