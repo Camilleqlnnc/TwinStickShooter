@@ -6,40 +6,30 @@ using UnityEngine.SceneManagement;
 
 public class TitleMenu : MonoBehaviour
 {
-    public GameObject titleMenu, controlMenu;
-    public GameObject menuFirstButton, controlFirstButton, controlCloseButton;
+
     //Toutes les variables accessibles dans l'inspector
     #region Exposed
-
+    [SerializeField] float levelLoadDelay = 1f;
+    public GameObject titleMenu, controlMenu;
+    public GameObject menuFirstButton, controlFirstButton, controlCloseButton;
     #endregion
 
     #region Unity Life Cycle
-    void Awake()
-    {
-        
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     #endregion
-   //Toutes les fonctions créées par l'équipe
     #region Main Methods
+
+    private IEnumerator WaitForSceneLoad()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(WaitForSceneLoad());
     }
 
     public void QuitGame()
     {
-        Debug.Log("quit game");
         Application.Quit();
     }
 
@@ -61,10 +51,5 @@ public class TitleMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(menuFirstButton);
 
     }
-    #endregion
-
-    //Les variables privées et protégées
-    #region Private & Protected
-
     #endregion
 }
