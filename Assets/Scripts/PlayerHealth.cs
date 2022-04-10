@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] IntVariable _playerCurrentHP;
     public GameObject _leftWing;
     public GameObject _rightWing;
+    public GameObject loseMenu;
     #endregion
 
     #region Unity Life Cycle
@@ -25,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             _playerCurrentHP._value--;
+            FindObjectOfType<SoundManager>().Play("PlayerImpact");
         }
         if(_playerCurrentHP._value <= 2)
         {
@@ -39,10 +43,32 @@ public class PlayerHealth : MonoBehaviour
             gameObject.SetActive(false);
             FindObjectOfType<SoundManager>().Stop("Theme");
             FindObjectOfType<SoundManager>().Play("PlayerDeath");
+            OpenLoseMenu();
+
         }
     }
-    #endregion
+    public void OpenLoseMenu()
+    {
+        loseMenu.SetActive(true);
+        gameObject.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void LoadTitleMenu()
+    {
+        StartCoroutine(WaitForReloadTitleMenu());
 
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    #endregion
+    private IEnumerator WaitForReloadTitleMenu()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("TitleMenu");
+    }
     //Les variables privées et protégées
     #region Private & Protected
 

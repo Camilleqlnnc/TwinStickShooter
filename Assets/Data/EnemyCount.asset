@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68552474a125d74c9db313d51dd398e, type: 3}
   m_Name: EnemyCount
   m_EditorClassIdentifier: 
-  _value: 0
+  _value: 5

@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 0}
-  r_speed: 10
-  m_speed: 10
+  r_speed: 5
+  m_speed: 5
 --- !u!54 &821939570
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -80,7 +80,8 @@ MonoBehaviour:
   _playerCurrentHP: {fileID: 11400000, guid: c3d33ec7a1147a641879dfcd77fc44cc, type: 2}
   _enemyCount: {fileID: 11400000, guid: 785b1f117f39d1942b887cc1459341ee, type: 2}
   _enemyStartHP: {fileID: 11400000, guid: 259b44b018f5a3f46ac5ce049fa800c7, type: 2}
-  enemyDeathParticles: {fileID: 0}
+  winMenu: {fileID: 0}
+  winMenuFirstButton: {fileID: 0}
 --- !u!1 &1182781342967340786
 GameObject:
   m_ObjectHideFlags: 0

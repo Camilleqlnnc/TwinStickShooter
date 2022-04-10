@@ -9,7 +9,6 @@ public class TitleMenu : MonoBehaviour
 
     //Toutes les variables accessibles dans l'inspector
     #region Exposed
-    [SerializeField] float levelLoadDelay = 1f;
     public GameObject titleMenu, controlMenu;
     public GameObject menuFirstButton, controlFirstButton, controlCloseButton;
     #endregion

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -8,44 +11,56 @@ public class LevelManager : MonoBehaviour
     #region Exposed
     [SerializeField] IntVariable _currentPlayerHP;
     [SerializeField] IntVariable _enemyCount;
+    public GameObject winMenu;
+    public GameObject winMenuFirstButton;
     #endregion
 
     #region Unity Life Cycle
+
+    // Update is called once per frame
     void Awake()
     {
-
+        _enemyCount._value = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
-    // Start is called before the first frame update
-    void Start()
+        
+    void Update()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(_enemyCount._value <= 0)
-        {
-            Win();
-        }
-        else if(_currentPlayerHP._value <= 0)
-        {
-            Lose();
-        }
-    }
     #endregion
-   //Toutes les fonctions créées par l'équipe
+    //Toutes les fonctions créées par l'équipe
     #region Main Methods
-    private void Win()
+    private IEnumerator WaitForSceneLoad()
     {
-        Debug.Log("WINNER");
-        //audioSource.PlayOneShot(_win);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void LoadNextLevel()
+    {
+        StartCoroutine(WaitForSceneLoad());
+    }
+    public void OpenWinMenu()
+    {
+        winMenu.SetActive(true);
+        Time.timeScale = 0f;
+        //clear selected object
+        EventSystem.current.SetSelectedGameObject(null);
+        //set a new selected object
+        EventSystem.current.SetSelectedGameObject(winMenuFirstButton);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    public void Win()
+    {
+            FindObjectOfType<SoundManager>().Play("Victory");
+            OpenWinMenu();
     }
 
     private void Lose()
     {
         Debug.Log("LOSE, TRY AGAIN");
-        //FindObjectOfType<SoundManager>().Play("PlayerDeath");
         //audioSource.PlayOneShot(_lose);
     }
     #endregion
